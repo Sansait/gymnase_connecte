@@ -86,8 +86,6 @@ namespace CRI.HitBoxTemplate.Serial
         /// <summary>
         /// Position of the impact.
         /// </summary>
-        [SerializeField]
-        [Tooltip("Position of the impact.")]
         private Vector3 _position;
 
         /// <summary>
@@ -108,6 +106,7 @@ namespace CRI.HitBoxTemplate.Serial
         private void Start()
         {
             _pointGrid = GameObject.FindGameObjectsWithTag("datapoint").Where(x => x.GetComponent<DatapointControl>().playerIndex == playerIndex).ToArray();
+            _timerOffHit0 = Time.time;
         }
 
         internal void OnImpact(Vector2 position)
@@ -138,7 +137,6 @@ namespace CRI.HitBoxTemplate.Serial
                     totG_ += dpc.curRemapVal;
                     xG_ += dpc.curRemapVal * datapoint.transform.position.x;
                     yG_ += dpc.curRemapVal * datapoint.transform.position.y;
-                    _timerOffHit0 = Time.time;
                 }
             }
 
@@ -157,6 +155,7 @@ namespace CRI.HitBoxTemplate.Serial
                 _totG = 0;   // reset pressure of current impact
 
                 _countHit++;   // increment number of hit
+                _timerOffHit0 = Time.time;
             }
             else
             {

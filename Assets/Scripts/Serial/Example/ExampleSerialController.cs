@@ -70,6 +70,9 @@ namespace CRI.HitBoxTemplate.Example
             return go;
         }
 
+        /// <summary>
+        /// Plays the End Game animation.
+        /// </summary>
         public void EndGame()
         {
             for (int i = 0; i < _serialControllers.Length; i++)
@@ -78,6 +81,9 @@ namespace CRI.HitBoxTemplate.Example
             }
         }
 
+        /// <summary>
+        /// Plays the Hit animation.
+        /// </summary>
         public void Hit()
         {
             for (int i = 0; i < _serialControllers.Length; i++)
@@ -86,6 +92,9 @@ namespace CRI.HitBoxTemplate.Example
             }
         }
 
+        /// <summary>
+        /// Plays the Display Grid animation.
+        /// </summary>
         public void DisplayGrid()
         {
             for (int i = 0; i < _serialControllers.Length; i++)
@@ -94,6 +103,9 @@ namespace CRI.HitBoxTemplate.Example
             }
         }
 
+        /// <summary>
+        /// Stop all animations and turn the leds off.
+        /// </summary>
         public void ShutDown()
         {
             for (int i = 0; i < _serialControllers.Length; i++)
@@ -102,6 +114,9 @@ namespace CRI.HitBoxTemplate.Example
             }
         }
 
+        /// <summary>
+        /// Plays the Screen Saver animation.
+        /// </summary>
         public void ScreenSaver()
         {
             for (int i = 0; i < _serialControllers.Length; i++)
