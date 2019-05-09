@@ -104,6 +104,7 @@ namespace CRI.HitBoxTemplate.Serial
         /// <param name="handshake">Handshake of the serial port.</param>
         /// <param name="playerCamera">The camera corresponding to the player.</param>
         /// <param name="impactThreshold">Threshold of impact</param>
+        /// <param name="displayDataPoints">Display the data points.</param>
         /// <param name="ignoreBlackBackground">Whether or not the impact on black background should be ignored.</param>
         public void Init(int playerIndex,
             int touchSurfaceGridRows,
@@ -115,6 +116,7 @@ namespace CRI.HitBoxTemplate.Serial
             Camera playerCamera,
             float impactThreshold,
             int delayOffHit,
+            bool displayDataPoints,
             bool ignoreBlackBackground = false)
         {
             // Prevents the touch surface to send messages.
@@ -142,19 +144,20 @@ namespace CRI.HitBoxTemplate.Serial
                     {
                         float x = i * ((float)1.0f / _cols);
                         float y = j * ((float)1.0f / _rows);
-                        dpc = GameObject.Instantiate(_datapointPrefab, playerCamera.ViewportToWorldPoint(new Vector3(x, y, playerCamera.nearClipPlane)), Quaternion.identity, grid.transform);
+                        dpc = GameObject.Instantiate(_datapointPrefab, playerCamera.ViewportToWorldPoint(new Vector3(x, y, playerCamera.nearClipPlane + 100.0f)), Quaternion.identity, grid.transform);
                         dpc.name = "Datapoint " + count + " " + playerIndex + " (" + x + ";" + y + ")";
                     }
                     else
                     {
                         float x = bounds.min.x + i * ((bounds.extents.x * 2.0f) / _cols);
                         float y = bounds.min.y + j * ((bounds.extents.y * 2.0f) / _rows);
-                        dpc = GameObject.Instantiate(_datapointPrefab, new Vector3(x, y, 0.0f), Quaternion.identity, grid.transform);
+                        dpc = GameObject.Instantiate(_datapointPrefab, new Vector3(x, y, 100.0f), Quaternion.identity, grid.transform);
                         dpc.name = "Datapoint " + count + " " + playerIndex + " (" + x + ";" + y + ")";
                     }
                     dpc.gameObject.layer = 8 + playerIndex;
                     count++;
                     dpc.playerIndex = playerIndex;
+                    dpc.GetComponentInChildren<MeshRenderer>().enabled = displayDataPoints;
                     dpc.touchSurface = this;
                     _pointGrid[i, _cols - j - 1] = dpc;
                 }

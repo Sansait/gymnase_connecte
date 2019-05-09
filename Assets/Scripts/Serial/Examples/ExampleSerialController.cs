@@ -67,7 +67,9 @@ namespace CRI.HitBoxTemplate.Example
                     handshake,
                     serialSettings.playerCamera,
                     serialSettings.impactThreshold,
-                    serialSettings.delayOffHit
+                    serialSettings.delayOffHit,
+                    serialSettings.displayDatapoints,
+                    serialSettings.ignoreBlackBackground
                     );
             }
             catch (Exception e)

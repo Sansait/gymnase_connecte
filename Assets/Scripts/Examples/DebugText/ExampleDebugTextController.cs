@@ -5,6 +5,8 @@ namespace CRI.HitBoxTemplate.Example
 {
     public class ExampleDebugTextController : MonoBehaviour
     {
+        public ExampleSerialController serialController;
+
         private void OnEnable()
         {
             ImpactPointControl.onImpact += OnImpact;
@@ -21,6 +23,15 @@ namespace CRI.HitBoxTemplate.Example
                 e.playerIndex,
                 e.impactPosition,
                 e.accelerometer));
+        }
+
+        private void Update()
+        {
+            Vector3[] accelerations = serialController.accelerations;
+            for (int i = 0; i < accelerations.Length; i++)
+            {
+                Debug.Log(string.Format("Acceleration Player {0}", accelerations[i]));
+            }
         }
     }
 }
