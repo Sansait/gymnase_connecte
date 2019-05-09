@@ -37,6 +37,21 @@ namespace CRI.HitBoxTemplate.Serial
         private static readonly object _ledsLocker = new object();
 
         private Texture2D _cameraTexture;
+
+        /// <summary>
+        /// Current texture generated from the camera.
+        /// </summary>
+        public Texture2D cameraTexture
+        {
+            get
+            {
+                lock (_ledsLocker)
+                {
+                    return _cameraTexture;
+                }
+            }
+        }
+
         /// <summary>
         /// Index of the player. The led display will depend on the screen of that player.
         /// </summary>

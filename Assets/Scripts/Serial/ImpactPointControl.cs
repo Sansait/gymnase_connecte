@@ -13,12 +13,19 @@ namespace CRI.HitBoxTemplate.Serial
     /// <summary>
     /// Event Payload
     /// </summary>
-    /// <param name="position">The position of the impact that initiated the event.</param>
-    /// <param name="playerIndex">The index of the player that initiated the event.</param>
     public struct ImpactPointControlEventArgs
     {
+        /// <summary>
+        /// The position of the impact that initiated the event.
+        /// </summary>
         public Vector2 impactPosition { get; }
-        public Vector2 accelerometer { get; }
+        /// <summary>
+        /// Accelerometer value.
+        /// </summary>
+        public Vector3 accelerometer { get; }
+        /// <summary>
+        /// The index of the player that initiated the event.
+        /// </summary>
         public int playerIndex { get; }
 
         public ImpactPointControlEventArgs(Vector2 impactPosition, Vector2 accelerometer, int playerIndex)
@@ -53,8 +60,19 @@ namespace CRI.HitBoxTemplate.Serial
         /// <summary>
         /// An instance of a serial touch controller of the same player index used to get the accelerometer data.
         /// </summary>
-        [Tooltip(" An instance of a serial touch controller of the same player index used to get the accelerometer data.")]
+        [Tooltip("An instance of a serial touch controller of the same player index used to get the accelerometer data.")]
         public SerialTouchController serialTouchController;
+        /// <summary>
+        /// An instance of a serial led controller of the same player index used to get the color data.
+        /// </summary>
+        [Tooltip("An instance of a serial led controller of the same player index used to get the color data.")]
+        public SerialLedController serialLedController;
+        /// <summary>
+        /// If true, the impact point controll will ignore all impacts over a black background.
+        /// </summary>
+        [Tooltip("If true, the impact point control will ignore all impacts over a black background.")]
+        private bool _ignoreBlackBackground;
+
 
         /// <summary>
         /// X coordinate of current impact.
@@ -106,6 +124,7 @@ namespace CRI.HitBoxTemplate.Serial
         private void Start()
         {
             _pointGrid = GameObject.FindGameObjectsWithTag("datapoint").Where(x => x.GetComponent<DatapointControl>().playerIndex == playerIndex).ToArray();
+            serialLedController = GameObject.FindObjectsOfType<SerialLedController>().First(x => x.playerIndex == playerIndex);
             _timerOffHit0 = Time.time;
         }
 
@@ -126,7 +145,7 @@ namespace CRI.HitBoxTemplate.Serial
             {
                 var datapoint = _pointGrid[i];
                 var dpc = datapoint.GetComponent<DatapointControl>();
-                if (dpc.curDerivVal > this.threshImpact)
+                if (dpc.curDerivVal > this.threshImpact && (!_ignoreBlackBackground || IsColored(dpc.transform.position)))
                 {
                     /////////////////////////////////////////////////////////////////////////////////////
                     /// /////////////////////////////////////////////////////////////////////////////////////
@@ -164,6 +183,12 @@ namespace CRI.HitBoxTemplate.Serial
                 _totG += totG_;
             }
         }
+
+        private bool IsColored(Vector3 position)
+        {
+            Vector3 point = serialLedController.playerCamera.WorldToScreenPoint(position);
+            return serialLedController.cameraTexture.GetPixel((int)point.x, (int)point.y) != Color.black;
+        }
     }
 
 #if UNITY_EDITOR
@@ -176,7 +201,7 @@ namespace CRI.HitBoxTemplate.Serial
 
             var ipc = (ImpactPointControl)target;
 
-            if (GUILayout.Button("Impact"))
+            if (Application.isPlaying && GUILayout.Button("Impact"))
                 ipc.OnImpact(Vector2.zero);
         }
     }

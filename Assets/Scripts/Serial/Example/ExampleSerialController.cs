@@ -64,6 +64,7 @@ namespace CRI.HitBoxTemplate.Example
             catch (Exception e)
             {
                 Debug.LogError(e.Message);
+                Debug.Log("Connection aborted.");
                 Destroy(go);
                 go = null;
             }
