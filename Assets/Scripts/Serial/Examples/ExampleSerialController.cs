@@ -1,6 +1,7 @@
 ﻿using CRI.HitBoxTemplate.Serial;
 using System;
 using System.IO.Ports;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,6 +16,14 @@ namespace CRI.HitBoxTemplate.Example
         private GameObject _serialControllerPrefab = null;
 
         private GameObject[] _serialControllers;
+
+        public Vector3[] accelerations
+        {
+            get
+            {
+                return _serialControllers.Select(x => x.GetComponent<SerialTouchController>().acceleration).ToArray();
+            }
+        }
 
         public const int touchControlGridRows = 24;
         public const int touchControlGridCols = 24;

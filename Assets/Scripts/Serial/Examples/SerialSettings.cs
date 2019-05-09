@@ -31,18 +31,25 @@ namespace CRI.HitBoxTemplate.Example
         /// </summary>
         [Tooltip("Minimum time (in ms) between 2 impacts to be validated (minimum 50ms <=> maximum 50 hits/s)")]
         public int delayOffHit;
+        /// <summary>
+        /// If true, the impact point control will ignore all impacts over a black background.
+        /// </summary>
+        [Tooltip("If true, the impact point control will ignore all impacts over a black background.")]
+        public bool ignoreBlackBackground;
 
         public SerialSettings(string touchSurfacePort,
             string ledControlPort,
             int impactThreshold,
             int delayOffHit,
-            Camera playerCamera)
+            Camera playerCamera,
+            bool ignoreBlackBackground)
         {
             this.touchControlSerialPortName = touchSurfacePort;
             this.ledControlSerialPortName = ledControlPort;
             this.impactThreshold = impactThreshold;
             this.delayOffHit = delayOffHit;
             this.playerCamera = playerCamera;
+            this.ignoreBlackBackground = ignoreBlackBackground;
         }
     }
 } 

@@ -71,9 +71,7 @@ namespace CRI.HitBoxTemplate.Serial
         /// If true, the impact point controll will ignore all impacts over a black background.
         /// </summary>
         [Tooltip("If true, the impact point control will ignore all impacts over a black background.")]
-        private bool _ignoreBlackBackground;
-
-
+        public bool ignoreBlackBackground;
         /// <summary>
         /// X coordinate of current impact.
         /// </summary>
@@ -145,7 +143,7 @@ namespace CRI.HitBoxTemplate.Serial
             {
                 var datapoint = _pointGrid[i];
                 var dpc = datapoint.GetComponent<DatapointControl>();
-                if (dpc.curDerivVal > this.threshImpact && (!_ignoreBlackBackground || IsColored(dpc.transform.position)))
+                if (dpc.curDerivVal > this.threshImpact && (!ignoreBlackBackground || IsColored(dpc.transform.position)))
                 {
                     /////////////////////////////////////////////////////////////////////////////////////
                     /// /////////////////////////////////////////////////////////////////////////////////////

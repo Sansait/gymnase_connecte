@@ -104,6 +104,7 @@ namespace CRI.HitBoxTemplate.Serial
         /// <param name="handshake">Handshake of the serial port.</param>
         /// <param name="playerCamera">The camera corresponding to the player.</param>
         /// <param name="impactThreshold">Threshold of impact</param>
+        /// <param name="ignoreBlackBackground">Whether or not the impact on black background should be ignored.</param>
         public void Init(int playerIndex,
             int touchSurfaceGridRows,
             int touchSurfaceGridCols,
@@ -113,7 +114,8 @@ namespace CRI.HitBoxTemplate.Serial
             Handshake handshake,
             Camera playerCamera,
             float impactThreshold,
-            int delayOffHit)
+            int delayOffHit,
+            bool ignoreBlackBackground = false)
         {
             // Prevents the touch surface to send messages.
             _sendMessages = false;
@@ -161,6 +163,7 @@ namespace CRI.HitBoxTemplate.Serial
             var ipc = GameObject.Instantiate(_impactPointControlPrefab, this.transform);
             ipc.threshImpact = impactThreshold;
             ipc.playerIndex = playerIndex;
+            ipc.ignoreBlackBackground = ignoreBlackBackground;
             ipc.serialTouchController = this;
             // Serial port initialization
             try

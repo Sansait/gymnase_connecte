@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7726583474970102549}
   - component: {fileID: 4190632889472145109}
   m_Layer: 0
-  m_Name: Player1Target
+  m_Name: Player1Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7726583474970102550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eafcd994621c52b40aca3954e4d021bd, type: 3}
+  m_Script: {fileID: 11500000, guid: fb3e5506faca5604fb012cdd34f7a7b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fadeTime: 1
+  _fadeTime: 1.5
