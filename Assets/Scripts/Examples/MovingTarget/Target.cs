@@ -19,7 +19,6 @@ namespace CRI.HitBoxTemplate.Example
         [SerializeField]
         [Tooltip("Is the target activated?")]
         internal bool activated = false;
-
         /// <summary>
         /// Prefab of the feedback object.
         /// </summary>

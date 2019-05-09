@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace CRI.HitBoxTemplate.Example
 {
-    public class ExampleGameController : MonoBehaviour
+    public class SimpleHitController : MonoBehaviour
     {
         [SerializeField]
         [Tooltip("Array of the prefab of the objects that will be put at the position of the impact. Each prefab is associated with its corresponding player index.")]
-        private GameObject[] _targetPrefab;
+        private GameObject[] _hitPrefabs;
 
         private int _playerCount;
 
@@ -23,8 +23,8 @@ namespace CRI.HitBoxTemplate.Example
 
         private void OnImpact(object sender, ImpactPointControlEventArgs e)
         {
-            if (e.playerIndex < _targetPrefab.Length)
-                Instantiate(_targetPrefab[e.playerIndex], e.impactPosition, Quaternion.identity);
+            if (e.playerIndex < _hitPrefabs.Length)
+                Instantiate(_hitPrefabs[e.playerIndex], e.impactPosition, Quaternion.identity);
         }
     }
 }
