@@ -8,15 +8,16 @@ public class PlayerPos : MonoBehaviour
 	Mass _massPos;
 	[SerializeField]
 	[Tooltip("Team number")]
-	private int _team;
+	private int _team = 0;
 
-	private int _newTeam = 0;
+	private int _newTeam;
 	[SerializeField]
 	[Tooltip("Mass of the player")]
 	private float mass;
 
 	private void Start()
 	{
+		_newTeam = _team;
 		if (_team != 0)
 			_massPos = GameObject.Find("Mass" + _team).GetComponent<Mass>();
 	}
