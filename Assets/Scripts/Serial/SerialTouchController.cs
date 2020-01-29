@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports;
 using System.Linq;
-using System;
+using CRI.HitBoxTemplate.OSC;
 
 namespace CRI.HitBoxTemplate.Serial
 {
@@ -27,7 +27,6 @@ namespace CRI.HitBoxTemplate.Serial
         /// Counts the number of data read each second.
         /// </summary>
         private int _dataCounter = 0;
-
         // Sensor grid variables
         /// <summary>
         /// The prefab of the datapoint control. The datapoint will be cloned for each sensor in the grid.
@@ -59,7 +58,7 @@ namespace CRI.HitBoxTemplate.Serial
         // Physics values.
         private Vector3 _acceleration;
 
-        private static readonly object _accelerationLocker = new object();
+		private static readonly object _accelerationLocker = new object();
         /// <summary>
         /// Acceleration values.
         /// </summary>
@@ -80,7 +79,7 @@ namespace CRI.HitBoxTemplate.Serial
         /// <summary>
         /// Max sac of accCollection.
         /// </summary>
-        private const int nAcc = 5; // max size of accCollection (size of filter)
+        private const int nAcc = 1; // max size of accCollection (size of filter)
 
         // Game values.
         /// <summary>
@@ -162,7 +161,7 @@ namespace CRI.HitBoxTemplate.Serial
                     _pointGrid[i, _cols - j - 1] = dpc;
                 }
             }
-            // Imapact point initialization
+            // Impact point initialization
             var ipc = GameObject.Instantiate(_impactPointControlPrefab, this.transform);
             ipc.threshImpact = impactThreshold;
             ipc.playerIndex = playerIndex;
@@ -243,8 +242,8 @@ namespace CRI.HitBoxTemplate.Serial
         {
             if (_serialPort.IsOpen)
             {
-                // Get serial data from second thread
-                int count = QueueLength();
+				// Get serial data from second thread
+				int count = QueueLength();
                 for (int i = 0; i < count; i++)
                 {
                     string rawDataStr = Dequeue();
@@ -253,6 +252,8 @@ namespace CRI.HitBoxTemplate.Serial
                         ParseSerialData(rawDataStr);
                     }
                 }
+
+				OSC_Sender.Instance.SendAcceleration(_acceleration);
 
 				// Remap and display data points
 				for (int i = 0; i < _rows; i++)
@@ -294,7 +295,7 @@ namespace CRI.HitBoxTemplate.Serial
         /// <param name="serialData">The serial data that will be parsed.</param>
         private void ParseSerialData(string serialData)
         {
-            serialData = serialData.Trim();
+            serialData = serialData.Trim(); // Removing whitespaces before and after data
 
             // First character of the string is an adress
             char adr_ = serialData.ToCharArray()[0]; // get address character
@@ -348,11 +349,13 @@ namespace CRI.HitBoxTemplate.Serial
                                 }
                                 smoothAcc_ /= (float)_accCollection.Count;
 
-                                _acceleration = smoothAcc_;
+								_acceleration = smoothAcc_;
                                 _acceleration /= 10000f; // map acceleration TO CHANGE
                                 _dataCounter++;
-                            }
-                        }
+
+								//_sender.SendAcceleration(_acceleration);
+							}
+						}
                     }
                     break;
 
