@@ -254,9 +254,14 @@ namespace CRI.HitBoxTemplate.Serial
                     }
                 }
 
+<<<<<<< Updated upstream
 
                 // Remap and display data points
                 for (int i = 0; i < _rows; i++)
+=======
+				// Remap and display data points
+				for (int i = 0; i < _rows; i++)
+>>>>>>> Stashed changes
                 {
                     // Get row data range
                     float minRow = 1000.0f;

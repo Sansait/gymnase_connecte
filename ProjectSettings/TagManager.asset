@@ -6,6 +6,17 @@ TagManager:
   tags:
   - datapoint
   - Trail
+<<<<<<< Updated upstream
+=======
+  - OSC
+  - bag
+  - SerialLedController
+  - Cube_To_Render
+  - Mass
+  - PlayerBar
+  - Wall
+  - Goal
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

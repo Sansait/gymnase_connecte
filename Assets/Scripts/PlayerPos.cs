@@ -1,0 +1,40 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using CRI.HitBoxTemplate.Example;
+
+public class PlayerPos : MonoBehaviour
+{
+	Mass _massPos;
+	[SerializeField]
+	[Tooltip("Team number")]
+	private int _team;
+
+	private int _newTeam = 0;
+	[SerializeField]
+	[Tooltip("Mass of the player")]
+	private float mass;
+
+	private void Start()
+	{
+		if (_team != 0)
+			_massPos = GameObject.Find("Mass" + _team).GetComponent<Mass>();
+	}
+
+	// Update is called once per frame
+	void Update()
+    {
+		if ((this.transform.position.x > 18 || this.transform.position.x < -18) && _team == 0)
+			_newTeam = this.transform.position.x > 18 ? 1 : 2;
+		if (_newTeam != _team && _newTeam != 0)
+		{
+			_team = _newTeam;
+			_massPos = GameObject.Find("Mass" + _team).GetComponent<Mass>();
+			this.GetComponent<MeshRenderer>().material = GameObject.Find("Mass" + _team).GetComponent<MeshRenderer>().material;
+		}
+		else if (_newTeam != _team && _newTeam == 0)
+			_massPos = null;
+		if (_massPos)
+			_massPos.AddPosMass(this.transform.position, mass);
+    }
+}
