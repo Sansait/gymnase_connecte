@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CRI.HitBoxTemplate.Example
 {
-	public class Mass : MonoBehaviour
+	public class Mass_Pong : MonoBehaviour
 	{
 		private Vector3 posGlob = Vector3.zero;
 		private float totalMass;
@@ -13,11 +13,6 @@ namespace CRI.HitBoxTemplate.Example
 		{
 			posGlob += (pos * mass);
 			totalMass += mass;
-		}
-
-		void Start()
-		{
-
 		}
 
 		void Update()

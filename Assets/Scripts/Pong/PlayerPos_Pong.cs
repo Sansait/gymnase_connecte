@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using CRI.HitBoxTemplate.Example;
 
-public class PlayerPos : MonoBehaviour
+public class PlayerPos_Pong : MonoBehaviour
 {
-	Mass _massPos;
+	Mass_Pong _massPos;
 	[SerializeField]
 	[Tooltip("Team number")]
 	private int _team = 0;
@@ -19,7 +19,7 @@ public class PlayerPos : MonoBehaviour
 	{
 		_newTeam = _team;
 		if (_team != 0)
-			_massPos = GameObject.Find("Mass" + _team).GetComponent<Mass>();
+			_massPos = GameObject.Find("Mass" + _team).GetComponent<Mass_Pong>();
 	}
 
 	// Update is called once per frame
@@ -30,7 +30,7 @@ public class PlayerPos : MonoBehaviour
 		if (_newTeam != _team && _newTeam != 0)
 		{
 			_team = _newTeam;
-			_massPos = GameObject.Find("Mass" + _team).GetComponent<Mass>();
+			_massPos = GameObject.Find("Mass" + _team).GetComponent<Mass_Pong>();
 			this.GetComponent<MeshRenderer>().material = GameObject.Find("Mass" + _team).GetComponent<MeshRenderer>().material;
 		}
 		else if (_newTeam != _team && _newTeam == 0)
