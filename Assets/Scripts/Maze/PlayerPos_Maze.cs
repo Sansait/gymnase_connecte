@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using CRI.HitBoxTemplate.Example;
 
-public class PlayerPos_Maze : MonoBehaviour
+namespace CRI.HitBoxTemplate.Example
 {
-    Mass_Maze _massPos;
-
-    [SerializeField]
-    [Tooltip("Mass of the player")]
-    private float mass;
-
-    private void Start()
+    public class PlayerPos_Maze : MonoBehaviour
     {
-        _massPos = GameObject.Find("Mass1").GetComponent<Mass_Maze>();
-    }
+        Mass_Maze _massPos;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (_massPos)
-            _massPos.AddPosMass(this.transform.position, mass);
+        [SerializeField]
+        [Tooltip("Mass of the player")]
+        private float mass;
+
+        private void Start()
+        {
+            _massPos = GameObject.Find("Mass1").GetComponent<Mass_Maze>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (_massPos)
+                _massPos.AddPosMass(this.transform.position, mass);
+        }
     }
 }

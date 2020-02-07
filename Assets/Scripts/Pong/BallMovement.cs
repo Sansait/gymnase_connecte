@@ -5,7 +5,10 @@ using CRI.HitBoxTemplate.ScoreManager;
 
 public class BallMovement : MonoBehaviour
 {
-	public float init_speed = 0.02f;
+	[SerializeField]
+	private float init_speed = 0.02f;
+	[SerializeField]
+	private float _speed_inc = 0.01f;
 	private float _speed;
 	private Vector3 _direction = Vector3.left;
 	private int counter = 0;
@@ -37,7 +40,7 @@ public class BallMovement : MonoBehaviour
 			_direction = RotatePointAroundAxis(Vector3.left, angle, Vector3.up);
 		else
 			_direction = RotatePointAroundAxis(Vector3.right, angle, Vector3.down);
-		_speed += 0.002f;
+		_speed += _speed_inc;
 	}
 
 	private void Collision_Wall()
