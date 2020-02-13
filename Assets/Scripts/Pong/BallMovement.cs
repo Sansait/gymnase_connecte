@@ -43,29 +43,30 @@ public class BallMovement : MonoBehaviour
 		_speed += _speed_inc;
 	}
 
-	private void Collision_Wall()
+	private void Collision_Wall(Collision collision)
 	{
-		if (this.transform.position.z > 0)
+		if (collision.gameObject.name == "Upper")
 			_direction = Vector3.Reflect(_direction, Vector3.back);
-		else
+		else if (collision.gameObject.name == "Lower")
 			_direction = Vector3.Reflect(_direction, Vector3.forward);
 	}
 
-	void Score()
+	void Score(Collision collision)
 	{
-		if (this.transform.position.x > 15)
+		if (collision.gameObject.name == "Blue Team (1)")
 		{
 			_direction = Vector3.left;
 			ScoreManager.Instance.redScore++;
 			Debug.Log("Red Team Scores");
+			New_Ball();
 		}
-		else
+		else if (collision.gameObject.name == "Red Team (2)")
 		{
 			_direction = Vector3.right;
 			ScoreManager.Instance.blueScore++;
 			Debug.Log("Blue Team Scores");
+			New_Ball();
 		}
-		New_Ball();
 	}
 
 	private void OnCollisionEnter(Collision collision)
@@ -73,9 +74,9 @@ public class BallMovement : MonoBehaviour
 		if (collision.gameObject.tag == "PlayerBar")
 			Collision_PlayerBar(collision);
 		else if (collision.gameObject.tag == "Wall")
-			Collision_Wall();
+			Collision_Wall(collision);
 		else if (collision.gameObject.tag == "Goal")
-			Score();
+			Score(collision);
 	}
 
 	// Update is called once per frame
