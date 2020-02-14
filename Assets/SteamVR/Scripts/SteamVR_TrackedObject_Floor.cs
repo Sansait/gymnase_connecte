@@ -63,16 +63,9 @@ namespace Valve.VR
 
 			pose.pos.y = 0;
 
-			if (origin != null)
-			{
-				transform.position = origin.transform.TransformPoint(pose.pos);
-				transform.rotation = origin.rotation * pose.rot;
-			}
-			else
-			{
-				transform.localPosition = pose.pos;
-				transform.localRotation = pose.rot;
-			}
+			transform.localPosition = pose.pos;
+			transform.localRotation = pose.rot;
+
         }
 
         SteamVR_Events.Action newPosesAction;
