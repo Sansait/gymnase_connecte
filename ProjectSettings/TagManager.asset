@@ -9,6 +9,11 @@ TagManager:
   - Cube_To_Render
   - projectile
   - FxTemporaire
+  - Wall
+  - Mass
+  - PlayerBar
+  - Goal
+  - Tracker
   layers:
   - Default
   - TransparentFX

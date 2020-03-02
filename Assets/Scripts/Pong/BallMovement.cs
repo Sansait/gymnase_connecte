@@ -14,7 +14,7 @@ public class BallMovement : MonoBehaviour
 	private int counter = 0;
 
 	// Start is called before the first frame update
-	void Start()
+	void Awake()
     {
 		_speed = 0;
 		_direction = RotatePointAroundAxis(_direction, Random.Range(-45, 46), Vector3.up);
@@ -34,12 +34,20 @@ public class BallMovement : MonoBehaviour
 	private void Collision_PlayerBar(Collision collision)
 	{
 		Vector3 contactPoint = collision.GetContact(0).point;
-		float angle = (contactPoint.z - collision.transform.position.z) * 18;
+		float angle = (contactPoint.z - collision.transform.position.z) * 18; // calculating the angle to bounce the ball back
 
 		if (collision.gameObject.name == "Mass1")
+		{
+			if (contactPoint.x > collision.transform.position.x) // ignoring collision if PlayerBar is in front of the ball
+				return;
 			_direction = RotatePointAroundAxis(Vector3.left, angle, Vector3.up);
+		}
 		else
+		{
+			if (contactPoint.x < collision.transform.position.x) // ignoring collision if PlayerBar is in front of the ball
+				return;
 			_direction = RotatePointAroundAxis(Vector3.right, angle, Vector3.down);
+		}
 		_speed += _speed_inc;
 	}
 
@@ -90,10 +98,7 @@ public class BallMovement : MonoBehaviour
 			counter++;
 		}
 		else
-		{
-			//Debug.DrawRay(this.transform.position, _direction * 2);
 			this.transform.position += (_direction * _speed) / Time.deltaTime;
-		}
 	}
 
 	private Vector3 RotatePointAroundAxis(Vector3 point, float angle, Vector3 axis)

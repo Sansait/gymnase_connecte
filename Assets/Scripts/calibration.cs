@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace calibration
+namespace CRI.ConnectedGymnasium
 {
-	public class calibration : MonoBehaviour
+	public class Calibration : MonoBehaviour
 	{
-		[SerializeField] private GameObject tracker1;
-		[SerializeField] private GameObject tracker2;
 		[SerializeField] private GameObject CenterCalibration;
 		[SerializeField] private GameObject UpperCalibration;
-		[SerializeField] private GameObject players;
+		private GameObject tracker1;
+		private GameObject tracker2;
+		private GameObject players;
 
-		private void Update()
+		private void Awake()
 		{
-			if (Input.GetKeyDown(KeyCode.Space))
-				Calibrate();
+			players = GameObject.Find("Players");
+			tracker1 = GameObject.Find("Player1");
+			tracker2 = GameObject.Find("Player2");
 		}
 
-		void Calibrate()
+		public void Calibrate()
 		{
 			Vector3 rotation = Vector3.zero;
 			rotation.y = -Vector3.Angle((tracker2.transform.position - tracker1.transform.position).normalized, (UpperCalibration.transform.position - CenterCalibration.transform.position).normalized);
