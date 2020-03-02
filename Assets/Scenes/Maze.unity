@@ -2177,7 +2177,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1415771935}
   - component: {fileID: 1415771934}
-  - component: {fileID: 1415771936}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -2242,14 +2241,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!362 &1415771936
-WorldAnchor:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415771933}
-  serializedVersion: 2
 --- !u!1 &1434525555
 GameObject:
   m_ObjectHideFlags: 0

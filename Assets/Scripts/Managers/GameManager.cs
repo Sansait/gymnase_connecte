@@ -27,6 +27,10 @@ namespace CRI.ConnectedGymnasium.MainMenu
 		{
 			switch (m_Scene)
 			{
+				case "Main Menu":
+					UnloadScripts();
+					break;
+
 				case "Pong":
 					PongScripts();
 					break;

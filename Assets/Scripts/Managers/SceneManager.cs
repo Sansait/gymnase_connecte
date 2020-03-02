@@ -24,7 +24,7 @@ namespace CRI.ConnectedGymnasium
 			_instance = this;
 		}
 
-		// Players gameObject to share with other scenes for calibration purposes
+		// GameObjects to pass to other scenes
 		[SerializeField] private GameObject players;
 		[SerializeField] private GameObject gameManager;
 
@@ -48,30 +48,14 @@ namespace CRI.ConnectedGymnasium
 
 			UnityEngine.SceneManagement.SceneManager.SetActiveScene(UnityEngine.SceneManagement.SceneManager.GetSceneByName(m_Scene));
 			// Unload the previous Scene
-			UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currentScene);
+			asyncLoad = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currentScene);
 
-			GameManager.Instance.LoadScripts(m_Scene);
-		}
-
-		public IEnumerable ReturnToMainMenu()
-		{
-			Scene currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
-			Scene mainMenu = UnityEngine.SceneManagement.SceneManager.GetSceneByName("Main Menu");
-
-			UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(players, mainMenu);
-			UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(gameManager, mainMenu);
-
-			UnityEngine.SceneManagement.SceneManager.SetActiveScene(mainMenu);
-
-			GameManager.Instance.UnloadScripts();
-
-			AsyncOperation asyncUnload = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currentScene);
-			while (!asyncUnload.isDone)
+			while (!asyncLoad.isDone)
 			{
 				yield return null;
 			}
 
-
+			GameManager.Instance.LoadScripts(m_Scene);
 		}
 	}
 }
