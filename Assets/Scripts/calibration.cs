@@ -20,8 +20,17 @@ namespace CRI.ConnectedGymnasium
 			tracker2 = GameObject.Find("Player2");
 		}
 
+		private void ResetCalibration()
+		{
+			players.transform.position = Vector3.zero;
+			players.transform.localScale = Vector3.one;
+			players.transform.localRotation = Quaternion.Euler(Vector3.zero);
+		}
+
 		public void Calibrate()
 		{
+			ResetCalibration();
+
 			Vector3 rotation = Vector3.zero;
 			rotation.y = -Vector3.Angle((tracker2.transform.position - tracker1.transform.position).normalized, (UpperCalibration.transform.position - CenterCalibration.transform.position).normalized);
 			players.transform.rotation = Quaternion.Euler(rotation);
@@ -36,6 +45,8 @@ namespace CRI.ConnectedGymnasium
 
 			players.transform.position += CenterCalibration.transform.position - tracker1.transform.position;
 			Debug.Log(players.transform.position);
+
+			players.GetComponent<CalibrationSettings>().SaveSettings();
 
 			this.gameObject.SetActive(false);
 		}

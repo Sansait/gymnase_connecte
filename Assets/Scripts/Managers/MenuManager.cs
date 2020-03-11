@@ -29,76 +29,66 @@ namespace CRI.ConnectedGymnasium
 		// Calibration gameObject
 		[SerializeField] private GameObject calibrationGO;
 
-		// Linking every button to it's listener
-		void Awake()
-		{
-			playButton.onClick.AddListener(PlayButtonListener);
-			pongButton.onClick.AddListener(PongButtonListener);
-			mazeButton.onClick.AddListener(MazeButtonListener);
-			backButtonPlay.onClick.AddListener(BackButtonPlayListener);
-			calibrationButton.onClick.AddListener(CalibrationButtonListener);
-			calibrateButton.onClick.AddListener(CalibrateButtonListener);
-			backButtonCalibrate.onClick.AddListener(BackButtonCalibrateListener);
-			exitButton.onClick.AddListener(ExitButtonListener);
-			yesButton.onClick.AddListener(YesExitButtonListener);
-			backExitButton.onClick.AddListener(BackExitButtonListener);
-		}
-
-		void PlayButtonListener()
+		public void PlayButtonListener()
 		{
 			mainMenu.SetActive(false);
 			playMenu.SetActive(true);
 		}
 
-		void BackButtonPlayListener()
+		public void BackButtonPlayListener()
 		{
 			mainMenu.SetActive(true);
 			playMenu.SetActive(false);
 		}
 
-		void BackButtonCalibrateListener()
+		public void BackButtonCalibrateListener()
 		{
 			mainMenu.SetActive(true);
 			calibrationMenu.SetActive(false);
 			calibrationGO.SetActive(false);
 		}
 
-		void CalibrationButtonListener()
+		public void CalibrationButtonListener()
 		{
 			mainMenu.SetActive(false);
 			calibrationMenu.SetActive(true);
 			calibrationGO.SetActive(true);
 		}
 
-		void CalibrateButtonListener()
+		public void CalibrateButtonListener()
 		{
 			calibrationGO.GetComponent<Calibration>().Calibrate();
 			mainMenu.SetActive(true);
 			calibrationMenu.SetActive(false);
 		}
 
-		void PongButtonListener()
+		public void PongButtonListener()
 		{
 			StartCoroutine(SceneManager.Instance.LoadAsyncScene("Pong"));
 		}
 
-		void MazeButtonListener()
+		public void MazeButtonListener()
 		{
 			StartCoroutine(SceneManager.Instance.LoadAsyncScene("Maze"));
 		}
 
-		void ExitButtonListener()
+		public void MusicalChairButtonListener()
+		{
+			StartCoroutine(SceneManager.Instance.LoadAsyncScene("Musical Chair"));
+		}
+
+		public void ExitButtonListener()
 		{
 			mainMenu.SetActive(false);
 			exitMenu.SetActive(true);
 		}
 
-		void YesExitButtonListener()
+		public void YesExitButtonListener()
 		{
 			Application.Quit();
 		}
 
-		void BackExitButtonListener()
+		public void BackExitButtonListener()
 		{
 			exitMenu.SetActive(false);
 			mainMenu.SetActive(true);

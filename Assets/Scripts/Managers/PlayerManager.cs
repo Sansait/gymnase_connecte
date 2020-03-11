@@ -59,14 +59,13 @@ namespace CRI.ConnectedGymnasium
 			{
 				if (tracker.GetComponent<ActiveTracker>().toActivate == true && tracker.GetComponent<ActiveTracker>().active == false)
 				{
-					Debug.Log("Found tracker to activate : " + tracker.name);
 					foreach (var player in _players)
 					{
 						if (player.activeSelf == false)
 						{
-							Debug.Log(player.name + " linked to " + tracker.name);
 							player.SetActive(true);
 							player.transform.SetParent(tracker.transform);
+							player.transform.localPosition = Vector3.zero;
 							tracker.GetComponent<ActiveTracker>().active = true;
 							nbPlayer++;
 							break;

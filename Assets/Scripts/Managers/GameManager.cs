@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace CRI.ConnectedGymnasium.MainMenu
+namespace CRI.ConnectedGymnasium
 {
 	public class GameManager : MonoBehaviour
 	{

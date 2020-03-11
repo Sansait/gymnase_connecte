@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using CRI.ConnectedGymnasium.MainMenu;
 
 namespace CRI.ConnectedGymnasium
 {
@@ -47,6 +46,10 @@ namespace CRI.ConnectedGymnasium
 			UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(gameManager, UnityEngine.SceneManagement.SceneManager.GetSceneByName(m_Scene));
 
 			UnityEngine.SceneManagement.SceneManager.SetActiveScene(UnityEngine.SceneManagement.SceneManager.GetSceneByName(m_Scene));
+
+			// Activating scipts for the loaded scene
+			GameManager.Instance.LoadScripts(m_Scene);
+
 			// Unload the previous Scene
 			asyncLoad = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currentScene);
 
@@ -54,8 +57,6 @@ namespace CRI.ConnectedGymnasium
 			{
 				yield return null;
 			}
-
-			GameManager.Instance.LoadScripts(m_Scene);
 		}
 	}
 }
