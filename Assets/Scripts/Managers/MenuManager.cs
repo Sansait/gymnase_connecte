@@ -21,6 +21,7 @@ namespace CRI.ConnectedGymnasium
 		[SerializeField] private Button backButtonCalibrate;
 		[SerializeField] private Button pongButton;
 		[SerializeField] private Button mazeButton;
+		[SerializeField] private Button baryButton;
 		[SerializeField] private Button exitButton;
 		[SerializeField] private Button yesButton;
 		[SerializeField] private Button backExitButton;
@@ -70,6 +71,11 @@ namespace CRI.ConnectedGymnasium
 		public void MazeButtonListener()
 		{
 			StartCoroutine(SceneManager.Instance.LoadAsyncScene("Maze"));
+		}
+
+		public void BaryButtonListener()
+		{
+			StartCoroutine(SceneManager.Instance.LoadAsyncScene("Barycentre"));
 		}
 
 		public void MusicalChairButtonListener()

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using CRI.HitBoxTemplate.Example;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,6 +39,10 @@ namespace CRI.ConnectedGymnasium
 				case "Maze":
 					MazeScripts();
 					break;
+
+				case "Barycentre":
+					BaryScripts();
+					break;
 			}
 		} 
 
@@ -46,6 +51,14 @@ namespace CRI.ConnectedGymnasium
 			foreach (var player in PlayerManager.Instance._players)
 			{
 				player.GetComponent<PlayerPos_Maze>().enabled = true;
+			}
+		}
+
+		public void BaryScripts()
+		{
+			foreach (var player in PlayerManager.Instance._players)
+			{
+				player.GetComponent<Bary_PlayerPos>().enabled = true;
 			}
 		}
 
@@ -63,6 +76,7 @@ namespace CRI.ConnectedGymnasium
 			{
 				player.GetComponent<PlayerPos_Pong>().enabled = false;
 				player.GetComponent<PlayerPos_Maze>().enabled = false;
+				player.GetComponent<Bary_PlayerPos>().enabled = false;
 			}
 		}
 
