@@ -12,12 +12,15 @@ namespace CRI.ConnectedGymnasium
 		private GameObject tracker1;
 		private GameObject tracker2;
 		private GameObject players;
+		private GameObject playerManager;
 
 		private void Awake()
 		{
 			players = GameObject.Find("Players");
 			tracker1 = GameObject.Find("Player1");
 			tracker2 = GameObject.Find("Player2");
+			playerManager = GameObject.Find("PlayerManager");
+
 		}
 
 		private void ResetCalibration()
@@ -49,6 +52,8 @@ namespace CRI.ConnectedGymnasium
 			players.GetComponent<CalibrationSettings>().SaveSettings();
 
 			this.gameObject.SetActive(false);
+
+			playerManager.GetComponent<PlayerManager>().Reset_Players();
 		}
 	}
 }

@@ -26,4 +26,9 @@ public class ActiveTracker : MonoBehaviour
 			}
 		}
 	}
+
+	public void ResetLastPos()
+	{
+		lastPos = this.transform.position;
+	}
 }

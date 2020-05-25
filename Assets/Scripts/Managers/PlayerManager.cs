@@ -46,6 +46,26 @@ namespace CRI.ConnectedGymnasium
 			}
 		}
 
+		public void Reset_Players()
+		{
+			foreach (var player in _players)
+			{
+				if (player.activeSelf == true)
+				{
+					player.transform.SetParent(this.transform);
+					player.transform.localPosition = Vector3.zero;
+					nbPlayer--;
+					player.SetActive(false);
+				}
+			}
+			foreach (var tracker in _trackers)
+			{
+				tracker.GetComponent<ActiveTracker>().active = false;
+				tracker.GetComponent<ActiveTracker>().ResetLastPos();
+			}
+
+		}
+
 		void Update()
 		{
 			if (_checkTrackers)
