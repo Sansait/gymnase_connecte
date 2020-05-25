@@ -35,7 +35,7 @@ namespace CRI.ConnectedGymnasium
 			ResetCalibration();
 
 			Vector3 rotation = Vector3.zero;
-			rotation.y = -Vector3.Angle((tracker2.transform.position - tracker1.transform.position).normalized, (UpperCalibration.transform.position - CenterCalibration.transform.position).normalized);
+			rotation.y = Vector3.SignedAngle((tracker2.transform.position - tracker1.transform.position).normalized, (UpperCalibration.transform.position - CenterCalibration.transform.position).normalized, Vector3.up);
 			players.transform.rotation = Quaternion.Euler(rotation);
 			Debug.Log(rotation);
 
