@@ -32,24 +32,28 @@ namespace CRI.ConnectedGymnasium
 		// Getting a list of all trackers and a list of all players
 		void Start()
 		{
-			_trackers = GameObject.FindGameObjectsWithTag("Tracker");
-			_players = GameObject.FindGameObjectsWithTag("Player");
-			Debug.Log("First link player : " + _players[0].name);
+			GameObject[] _trackerstmp = GameObject.FindGameObjectsWithTag("Tracker");
+			_trackers = SortArrayKey(_trackerstmp, "Tracker");
+			GameObject[] _playerstmp = GameObject.FindGameObjectsWithTag("Player");
+			_players = SortArrayKey(_playerstmp, "Player");
 			Init_Players();
 		}
 
-		void SortArray(GameObject[]  _playerstmp)
+		GameObject[] SortArrayKey(GameObject[] _oldArray, string key)
 		{
-			for(int i = 0; i < _playerstmp.Length; i++)
+			GameObject[] _newArray = new GameObject[_oldArray.Length];
+			for(int i = 0; i < _oldArray.Length; i++)
 			{
-				for (int j = 0; j < _playerstmp.Length; j++)
+				for (int j = 0; j < _oldArray.Length; j++)
 				{
-					if (_playerstmp[j].name == "Player" + (i + 1))
+					if (_oldArray[j].name == key + (i + 1))
 					{
-						_players[i] = _playerstmp[j];
+						_newArray[i] = _oldArray[j];
+						break;
 					}
 				}
 			}
+			return _newArray;
 		}
 
 		// Setting every player as inactive
