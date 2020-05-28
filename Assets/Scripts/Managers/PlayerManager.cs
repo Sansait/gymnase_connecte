@@ -34,7 +34,22 @@ namespace CRI.ConnectedGymnasium
 		{
 			_trackers = GameObject.FindGameObjectsWithTag("Tracker");
 			_players = GameObject.FindGameObjectsWithTag("Player");
+			Debug.Log("First link player : " + _players[0].name);
 			Init_Players();
+		}
+
+		void SortArray(GameObject[]  _playerstmp)
+		{
+			for(int i = 0; i < _playerstmp.Length; i++)
+			{
+				for (int j = 0; j < _playerstmp.Length; j++)
+				{
+					if (_playerstmp[j].name == "Player" + (i + 1))
+					{
+						_players[i] = _playerstmp[j];
+					}
+				}
+			}
 		}
 
 		// Setting every player as inactive
@@ -88,6 +103,7 @@ namespace CRI.ConnectedGymnasium
 							player.transform.localPosition = Vector3.zero;
 							tracker.GetComponent<ActiveTracker>().active = true;
 							nbPlayer++;
+							Debug.Log(player.name + " is paired with " + tracker.name);
 							break;
 						}
 					}
