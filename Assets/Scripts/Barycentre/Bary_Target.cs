@@ -13,6 +13,7 @@ namespace CRI.HitBoxTemplate.Example
 			{
 				Bary_Manager.Instance.score++;
 				this.gameObject.SetActive(false);
+				Bary_TargetManager.Instance.nbTargetDown++;
 			}
 		}
 	}

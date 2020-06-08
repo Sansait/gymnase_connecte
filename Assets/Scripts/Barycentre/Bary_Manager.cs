@@ -52,7 +52,7 @@ namespace CRI.HitBoxTemplate.Example
 			{
 				_lastScoreSent = score;
 				uiScore.GetComponent<Text>().text = "Score : " + _lastScoreSent.ToString();
-				if (score == 11)
+				if (score == 40)
 					_timerOn = false;
 			}
 		}

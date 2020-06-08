@@ -29,8 +29,23 @@ namespace CRI.HitBoxTemplate.Example
 		// Update is called once per frame
 		void Update()
 		{
-			this.transform.position = Vector3.Normalize(player.dir) * 20;
-			float mass = player.dir.magnitude / this.transform.position.magnitude;
+			float mag = player.dir.magnitude;
+			float mass = 1;
+			if (mag < 17.5f)
+			{
+				this.transform.position = Vector3.Normalize(player.dir) * 18.8f;
+				mass = 1;
+			}
+			if (mag >= 17.5f)
+			{
+				this.transform.position = Vector3.Normalize(player.dir) * 21;
+				mass = 2;
+			}
+			if (mag >= 24.5f)
+			{
+				this.transform.position = Vector3.Normalize(player.dir) * 23.5f;
+				mass = 3;
+			}
 			_massPos.AddPosMass(this.transform.position, mass);
 		}
 	}
