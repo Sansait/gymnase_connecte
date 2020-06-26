@@ -9,8 +9,8 @@ public class CirclePlayerBagNeg : MonoBehaviour
 	void Update()
 	{
 		Vector3 tmp = circle.transform.localScale;
-		tmp.x -= 1;
-		tmp.z -= 1;
+		tmp.x -= .5f;
+		tmp.z -= .5f;
 		transform.localScale = tmp;
 	}
 }
