@@ -5,6 +5,7 @@ using UnityEngine;
 public class CirclePlayerBag : MonoBehaviour
 {
 	[SerializeField] private GameObject trackerPlayer;
+	[SerializeField] private GameObject players;
 
 	void Update()
 	{
