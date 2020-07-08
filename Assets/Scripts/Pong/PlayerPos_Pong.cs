@@ -41,6 +41,7 @@ namespace CRI.ConnectedGymnasium
 				_team = 2;
 				_massPos = GameObject.Find("Mass" + _team).GetComponent<Mass_Pong>();
 				this.GetComponent<MeshRenderer>().material = GameObject.Find("Mass" + _team).GetComponent<MeshRenderer>().material;
+				this.GetComponent<BoxCollider>().isTrigger = true;
 				PongManager.Instance.nbPlayerRed++;
 			}
 		}

@@ -47,7 +47,7 @@ namespace CRI.ConnectedGymnasium.Pong
 				{
 					gameStart = true;
 					uiGameStarting.SetActive(false);
-					ball.GetComponent<BallMovement>().enabled = true;
+				//	ball.GetComponent<BallMovement>().enabled = true;
 				}
 			}
 		}

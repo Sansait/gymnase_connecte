@@ -15,12 +15,12 @@ public class BallMovement : MonoBehaviour
 
 	// Start is called before the first frame update
 	void Awake()
-    {
+	{
 		_speed = 0;
 		_direction = RotatePointAroundAxis(_direction, Random.Range(-45, 46), Vector3.up);
 		if (Random.Range(0, 2) == 0)
 			_direction = -_direction;
-    }
+	}
 
 	void New_Ball()
 	{
@@ -89,7 +89,7 @@ public class BallMovement : MonoBehaviour
 
 	// Update is called once per frame
 	void Update()
-    {
+	{
 		if (counter < 50)
 			counter++;
 		else if (counter == 50)

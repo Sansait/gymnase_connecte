@@ -17,6 +17,7 @@ TagManager:
   - Chair
   - obstacle
   - Target
+  - Ball
   layers:
   - Default
   - TransparentFX
