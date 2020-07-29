@@ -7,6 +7,7 @@ public class BallMovement : MonoBehaviour
 	private float init_speed = 0.02f;
 	[SerializeField]
 	private float _speed_inc = 0.01f;
+	[SerializeField]
 	private float _speed;
 	private Vector3 _direction = Vector3.left;
 	private float timer = 0f;
@@ -28,13 +29,14 @@ public class BallMovement : MonoBehaviour
 	{
 		deathParticles.PlayDeathParticles(this.transform.position);
 		this.transform.position = Vector3.zero;
+		this.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
 		_speed = 0;
 		timer = 0;
 		_direction = RotatePointAroundAxis(_direction, 0, Vector3.up);
 	}
 
-	/*private void Collision_PlayerBar(Collision collision)
+	private void Collision_PlayerBar(Collision collision)
 	{
 		Vector3 contactPoint = collision.GetContact(0).point;
 		float angle = (contactPoint.z - collision.transform.position.z) * 18; // calculating the angle to bounce the ball back
@@ -51,16 +53,17 @@ public class BallMovement : MonoBehaviour
 				return;
 			_direction = RotatePointAroundAxis(Vector3.right, angle, Vector3.down).normalized;
 		}
+		this.GetComponent<Rigidbody>().velocity = Vector3.zero;
 		_speed += _speed_inc;
-	}*/
+	}
 
-	/*private void Collision_Wall(Collision collision)
+	private void Collision_Wall(Collision collision)
 	{
 		if (collision.gameObject.name == "Upper")
 			_direction = Vector3.Reflect(_direction, Vector3.back).normalized;
 		else if (collision.gameObject.name == "Lower")
 			_direction = Vector3.Reflect(_direction, Vector3.forward).normalized;
-	}*/
+	}
 
 	void Score(Collision collision)
 	{
@@ -84,18 +87,18 @@ public class BallMovement : MonoBehaviour
 	{
 
 		if (collision.gameObject.tag == "PlayerBar")
-        {
+		{
 			AudioManager.instance.Play("hit");
-			//	Collision_PlayerBar(collision);
+			Collision_PlayerBar(collision);
 		}
 		else if (collision.gameObject.tag == "Wall")
-        {
+		{
 			AudioManager.instance.Play("hit");
-			//	Collision_Wall(collision);
+			Collision_Wall(collision);
 		}
 
-		if (collision.gameObject.tag == "Goal")
-        {
+		else if (collision.gameObject.tag == "Goal")
+		{
 			AudioManager.instance.Play("death");
 			Score(collision);
 		}
