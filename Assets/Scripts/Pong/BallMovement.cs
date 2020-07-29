@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CRI.HitBoxTemplate.ScoreManager;
+using System.Security.Cryptography;
+using System.Collections.Specialized;
 
 public class BallMovement : MonoBehaviour
 {
@@ -12,6 +14,10 @@ public class BallMovement : MonoBehaviour
 	private float _speed;
 	private Vector3 _direction = Vector3.left;
 	private int counter = 0;
+
+	//Death variables
+	[SerializeField]
+	private DeathParticles deathParticles;
 
 	// Start is called before the first frame update
 	void Awake()
@@ -24,8 +30,9 @@ public class BallMovement : MonoBehaviour
 
 	void New_Ball()
 	{
+		deathParticles.PlayDeathParticles(this.transform.position);
 		this.transform.position = Vector3.zero;
-		
+
 		_speed = 0;
 		counter = 0;
 		_direction = RotatePointAroundAxis(_direction, Random.Range(-45, 46), Vector3.up);
