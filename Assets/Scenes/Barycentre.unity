@@ -1689,36 +1689,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2355230629222388096, guid: 38c49e03f718f81469a82901c6939beb,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2355230629222388096, guid: 38c49e03f718f81469a82901c6939beb,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2355230629222388096, guid: 38c49e03f718f81469a82901c6939beb,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 2355230629222388096, guid: 38c49e03f718f81469a82901c6939beb,
-        type: 3}
-      propertyPath: autoRandomSeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2355230629222388096, guid: 38c49e03f718f81469a82901c6939beb,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2355230629222388096, guid: 38c49e03f718f81469a82901c6939beb,
-        type: 3}
-      propertyPath: TrailModule.sizeAffectsWidth
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2355230629222388098, guid: 38c49e03f718f81469a82901c6939beb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1773,11 +1743,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2355230629222388099, guid: 38c49e03f718f81469a82901c6939beb,
-        type: 3}
-      propertyPath: m_MaxParticleSize
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2355230629222388101, guid: 38c49e03f718f81469a82901c6939beb,
         type: 3}
