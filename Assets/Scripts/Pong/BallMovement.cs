@@ -82,12 +82,23 @@ public class BallMovement : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		//if (collision.gameObject.tag == "PlayerBar")
-		//	Collision_PlayerBar(collision);
-		//else if (collision.gameObject.tag == "Wall")
-		//	Collision_Wall(collision);
-		 if (collision.gameObject.tag == "Goal")
+
+		if (collision.gameObject.tag == "PlayerBar")
+        {
+			AudioManager.instance.Play("hit");
+			//	Collision_PlayerBar(collision);
+		}
+		else if (collision.gameObject.tag == "Wall")
+        {
+			AudioManager.instance.Play("hit");
+			//	Collision_Wall(collision);
+		}
+
+		if (collision.gameObject.tag == "Goal")
+        {
+			AudioManager.instance.Play("death");
 			Score(collision);
+		}
 	}
 
 	// Update is called once per frame
