@@ -11,6 +11,7 @@ namespace CRI.HitBoxTemplate.Example
 		{
 			if (collision.gameObject.tag == "Mass")
 			{
+				AudioManager.instance.Play("death");
 				Bary_Manager.Instance.score++;
 				this.gameObject.SetActive(false);
 				Bary_TargetManager.Instance.nbTargetDown++;
