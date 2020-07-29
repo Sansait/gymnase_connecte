@@ -65,7 +65,7 @@ namespace CRI.ConnectedGymnasium
 
 		public void PongButtonListener()
 		{
-			StartCoroutine(SceneManager.Instance.LoadAsyncScene("Pong"));
+			StartCoroutine(SceneManager.Instance.LoadAsyncScene("PongUpgrade"));
 		}
 
 		public void MazeButtonListener()

@@ -33,7 +33,7 @@ public class BallMovement : MonoBehaviour
 
 		_speed = 0;
 		timer = 0;
-		_direction = RotatePointAroundAxis(_direction, 0, Vector3.up);
+		_direction = RotatePointAroundAxis(_direction, Random.Range(-45, 46), Vector3.up);
 	}
 
 	private void Collision_PlayerBar(Collision collision)

@@ -32,7 +32,7 @@ namespace CRI.ConnectedGymnasium
 					UnloadScripts();
 					break;
 
-				case "Pong":
+				case "PongUpgrade":
 					PongScripts();
 					break;
 
