@@ -25,7 +25,7 @@ namespace CRI.ConnectedGymnasium
 
 
 		public bool _checkTrackers = true;
-		private GameObject[] _trackers;
+		public GameObject[] trackers { get; private set; }
 		public GameObject[] _players { get; private set; }
 		public int nbPlayer { get; private set; } = 0;
 
@@ -33,7 +33,7 @@ namespace CRI.ConnectedGymnasium
 		void Start()
 		{
 			GameObject[] _trackerstmp = GameObject.FindGameObjectsWithTag("Tracker");
-			_trackers = SortArrayKey(_trackerstmp, "Tracker");
+			trackers = SortArrayKey(_trackerstmp, "Tracker");
 			GameObject[] _playerstmp = GameObject.FindGameObjectsWithTag("Player");
 			_players = SortArrayKey(_playerstmp, "Player");
 			Init_Players();
@@ -77,10 +77,9 @@ namespace CRI.ConnectedGymnasium
 					player.SetActive(false);
 				}
 			}
-			foreach (var tracker in _trackers)
+			foreach (var tracker in trackers)
 			{
 				tracker.GetComponent<ActiveTracker>().active = false;
-				tracker.GetComponent<ActiveTracker>().ResetLastPos();
 			}
 
 		}
@@ -94,7 +93,7 @@ namespace CRI.ConnectedGymnasium
 		// Checking every tracker for activity and linking it to a player if it is active
 		void CheckForActiveTrackers()
 		{
-			foreach (var tracker in _trackers)
+			foreach (var tracker in trackers)
 			{
 				if (tracker.GetComponent<ActiveTracker>().toActivate == true && tracker.GetComponent<ActiveTracker>().active == false)
 				{

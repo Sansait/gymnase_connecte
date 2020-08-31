@@ -232,7 +232,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: {x: 0, y: 0, z: 0}
-  mass: 0
 --- !u!114 &549464630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,7 +400,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: {x: 0, y: 0, z: 0}
-  mass: 0
 --- !u!114 &597164250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,7 +568,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: {x: 0, y: 0, z: 0}
-  mass: 0
 --- !u!114 &715968762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -766,7 +763,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933062497}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40.8, y: 0, z: -2.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1098953078}
@@ -785,7 +782,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: {x: 0, y: 0, z: 0}
-  mass: 0
 --- !u!114 &933062500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1186,7 +1182,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: {x: 0, y: 0, z: 0}
-  mass: 0
 --- !u!114 &1270813924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,6 +1308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1330519216}
+  - component: {fileID: 1330519217}
   m_Layer: 0
   m_Name: TrackerManager
   m_TagString: Untagged
@@ -1343,6 +1339,18 @@ Transform:
   m_Father: {fileID: 908474095}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1330519217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330519215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecafda1bbc532b4bb9beb0ed6ec9667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1350427723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,7 +1563,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: {x: 0, y: 0, z: 0}
-  mass: 0
 --- !u!114 &1550448562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1844,7 +1851,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: {x: 0, y: 0, z: 0}
-  mass: 0
 --- !u!114 &2048074765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2074,7 +2080,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dir: {x: 0, y: 0, z: 0}
-  mass: 0
 --- !u!114 &2059504331
 MonoBehaviour:
   m_ObjectHideFlags: 0
