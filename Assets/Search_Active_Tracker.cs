@@ -31,7 +31,8 @@ namespace CRI.ConnectedGymnasium
 					else if (deviceClass == ETrackedDeviceClass.GenericTracker)
 					{
 						Debug.Log("Tracker got connected at index:" + index);
-						PlayerManager.Instance.trackers[index - 1].GetComponent<ActiveTracker>().toActivate = true;
+						if (index > 0)
+							PlayerManager.Instance.trackers[index - 1].GetComponent<ActiveTracker>().toActivate = true;
 					}
 				}
 			}
