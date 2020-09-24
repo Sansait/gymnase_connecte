@@ -26,6 +26,8 @@ namespace CRI.ConnectedGymnasium
 		public int init_temp = 10;
 		[SerializeField]
 		public Material[] temp_mat;
+		private List<GameObject> _particles = new List<GameObject>();
+		public float averageSpeed;
 
 		private void Awake()
 		{
@@ -38,16 +40,21 @@ namespace CRI.ConnectedGymnasium
 			Vector3 tmp = Vector3.zero;
 			for (int i = 0; i < nb_particle; i++)
 			{
-				tmp.z = (i / 30) * 2;
-				tmp.x = (i  % 30) * 2;
-				Instantiate(particle, tmp, Quaternion.identity, this.transform);
+				tmp.z = (i / 25) * 2 - 10;
+				tmp.x = (i  % 25) * 2 - 25;
+				_particles.Add(Instantiate(particle, tmp, Quaternion.identity, this.transform));
 			}
 		}
 
 		// Update is called once per frame
 		void Update()
 		{
-
+			float tmp = 0f;
+			foreach(var part in _particles)
+			{
+				tmp += part.GetComponent<Rigidbody>().velocity.magnitude;
+			}
+			averageSpeed = tmp / _particles.Count;
 		}
 	}
 }
