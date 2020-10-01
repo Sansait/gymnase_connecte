@@ -42,7 +42,8 @@ namespace CRI.ConnectedGymnasium
 			{
 				tmp.z = (i / 25) * 2 - 10;
 				tmp.x = (i  % 25) * 2 - 25;
-				_particles.Add(Instantiate(particle, tmp, Quaternion.identity, this.transform));
+				GameObject go = Instantiate(particle, tmp, Quaternion.identity, this.transform);
+				go.name = "Particle " + i;
 			}
 		}
 

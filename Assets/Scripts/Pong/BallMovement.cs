@@ -105,7 +105,7 @@ public class BallMovement : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update()
+	void FixedUpdate()
 	{
 		if (timer < 2f)
 			timer += Time.deltaTime;
@@ -115,7 +115,7 @@ public class BallMovement : MonoBehaviour
 			timer = 5f;
 		}
 		else
-			this.GetComponent<Rigidbody>().MovePosition(this.transform.position + ((_direction * _speed) / Time.deltaTime));
+			this.GetComponent<Rigidbody>().MovePosition(this.transform.position + ((_direction * _speed) * Time.fixedDeltaTime));
 	}
 
 	private Vector3 RotatePointAroundAxis(Vector3 point, float angle, Vector3 axis)

@@ -67,6 +67,7 @@ namespace CRI.ConnectedGymnasium
 			foreach (var player in PlayerManager.Instance._players)
 			{
 				player.GetComponent<PlayerPos_Pong>().enabled = true;
+				player.GetComponent<PlayerPos_Pong>()._team = 0;
 			}
 		}
 

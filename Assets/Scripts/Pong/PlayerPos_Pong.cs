@@ -9,7 +9,7 @@ namespace CRI.ConnectedGymnasium
 		Mass_Pong _massPos;
 		[SerializeField]
 		[Tooltip("Team number")]
-		private int _team = 0;
+		public int _team = 0;
 
 		[SerializeField]
 		[Tooltip("Mass of the player")]
@@ -23,9 +23,9 @@ namespace CRI.ConnectedGymnasium
 				_massPos = null;
 		}
 
-		private void Team_Swap(Collision collision)
+		private void Team_Swap(Collider other)
 		{
-			if (collision.gameObject.name == "Blue Team (1)" && _team != 1)
+			if (other.gameObject.name == "Blue Team (1)" && _team != 1)
 			{
 				if (_team == 2)
 					PongManager.Instance.nbPlayerRed--;
@@ -34,7 +34,7 @@ namespace CRI.ConnectedGymnasium
 				this.GetComponent<MeshRenderer>().material = GameObject.Find("Mass" + _team).GetComponent<MeshRenderer>().material;
 				PongManager.Instance.nbPlayerBlue++;
 			}
-			else if (collision.gameObject.name == "Red Team (2)" && _team != 2)
+			else if (other.gameObject.name == "Red Team (2)" && _team != 2)
 			{
 				if (_team == 1)
 					PongManager.Instance.nbPlayerBlue--;
@@ -46,10 +46,11 @@ namespace CRI.ConnectedGymnasium
 			}
 		}
 
-		private void OnCollisionEnter(Collision collision)
+		private void OnTriggerEnter(Collider other)
 		{
-			if (collision.gameObject.tag == "Goal" && PongManager.Instance.gameStart == false)
-				Team_Swap(collision);
+			Debug.Log("Touched Trigger");
+			if (other.gameObject.tag == "Goal" && PongManager.Instance.gameStart == false)
+				Team_Swap(other);
 		}
 
 		// Update is called once per frame
