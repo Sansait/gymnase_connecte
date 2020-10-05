@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class Zone_Probe : MonoBehaviour
 {
-	private int nb_collision = 0;
-	private float tot_temp = 0.0f;
+	public float av_temp = 0.0f;
+	public List<GameObject> part_list;
 
 	private void OnTriggerEnter(Collider other)
 	{
-		nb_collision++;
-		tot_temp += other.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
-		Debug.Log(nb_collision + " " + tot_temp / nb_collision);
+		part_list.Add(other.gameObject);
 	}
 
 	private void OnTriggerExit(Collider other)
 	{
-		
+		part_list.Remove(other.gameObject);
+	}
+
+	private void Update()
+	{
+		float tmp = 0.0f;
+		foreach(var part in part_list)
+		{
+			tmp += part.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+		}
+		av_temp = tmp / part_list.Count;
 	}
 }
