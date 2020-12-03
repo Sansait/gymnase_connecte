@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace CRI.ConnectedGymnasium
 {
@@ -41,7 +42,7 @@ namespace CRI.ConnectedGymnasium
 			mainMenu.SetActive(true);
 			playMenu.SetActive(false);
 		}
-
+			
 		public void BackButtonCalibrateListener()
 		{
 			mainMenu.SetActive(true);
@@ -65,22 +66,22 @@ namespace CRI.ConnectedGymnasium
 
 		public void PongButtonListener()
 		{
-			StartCoroutine(SceneManager.Instance.LoadAsyncScene("PongUpgrade"));
+			UnityEngine.SceneManagement.SceneManager.LoadScene("PongUpgrade", LoadSceneMode.Single);
 		}
 
 		public void MazeButtonListener()
 		{
-			StartCoroutine(SceneManager.Instance.LoadAsyncScene("Maze"));
+			UnityEngine.SceneManagement.SceneManager.LoadScene("Maze", LoadSceneMode.Single);
 		}
 
 		public void BaryButtonListener()
 		{
-			StartCoroutine(SceneManager.Instance.LoadAsyncScene("Barycentre"));
+			UnityEngine.SceneManagement.SceneManager.LoadScene("Barycentre", LoadSceneMode.Single);
 		}
 
 		public void MusicalChairButtonListener()
 		{
-			StartCoroutine(SceneManager.Instance.LoadAsyncScene("Musical Chair"));
+			UnityEngine.SceneManagement.SceneManager.LoadScene("Musical Chair", LoadSceneMode.Single);
 		}
 
 		public void ExitButtonListener()

@@ -8,10 +8,12 @@ namespace CRI.ConnectedGymnasium
 {
 	public class Search_Active_Tracker : MonoBehaviour
 	{
+		private PlayerManager playerManager;
 		void OnEnable()
 		{
 			Debug.Log("Testing connection for devices");
 			SteamVR_Events.DeviceConnected.Listen(OnDeviceConnected);
+			playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
 		}
 
 		// A SteamVR device got connected/disconnected
@@ -32,7 +34,7 @@ namespace CRI.ConnectedGymnasium
 					{
 						Debug.Log("Tracker got connected at index:" + index);
 						if (index > 0)
-							PlayerManager.Instance.trackers[index - 1].GetComponent<ActiveTracker>().toActivate = true;
+							playerManager._trackers[index - 1].GetComponent<ActiveTracker>().toActivate = true;
 					}
 				}
 			}

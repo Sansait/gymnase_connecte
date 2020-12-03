@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pong.unity
     guid: 8bc2428d499b7794eb731b55e2288e9f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Musical chair.unity
     guid: 53c91b8d7b6beeb478604ebe979b0d47
   - enabled: 1

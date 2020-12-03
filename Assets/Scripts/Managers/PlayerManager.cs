@@ -7,35 +7,21 @@ namespace CRI.ConnectedGymnasium
 {
 	public class PlayerManager : MonoBehaviour
 	{
-		private static PlayerManager _instance;
-		public static PlayerManager Instance
-		{
-			get
-			{
-				if (_instance == null)
-					Debug.LogError("Player Manager is NULL.");
-				return (_instance);
-			}
-		}
-
-		private void Awake()
-		{
-			_instance = this;
-		}
-
-
 		public bool _checkTrackers = true;
-		public GameObject[] trackers { get; private set; }
+		public GameObject[] _trackers { get; private set; }
 		public GameObject[] _players { get; private set; }
 		public int nbPlayer { get; private set; } = 0;
 
-		// Getting a list of all trackers and a list of all players
-		void Start()
+		//Getting a list of all trackers and a list of all players
+		void Awake()
 		{
+			Debug.Log("Start");
 			GameObject[] _trackerstmp = GameObject.FindGameObjectsWithTag("Tracker");
-			trackers = SortArrayKey(_trackerstmp, "Tracker");
+			_trackers = SortArrayKey(_trackerstmp, "Tracker");
+			Debug.Log(_trackers[0]);
 			GameObject[] _playerstmp = GameObject.FindGameObjectsWithTag("Player");
 			_players = SortArrayKey(_playerstmp, "Player");
+			Debug.Log(_players[0]);
 			Init_Players();
 		}
 
@@ -77,7 +63,7 @@ namespace CRI.ConnectedGymnasium
 					player.SetActive(false);
 				}
 			}
-			foreach (var tracker in trackers)
+			foreach (var tracker in _trackers)
 			{
 				tracker.GetComponent<ActiveTracker>().active = false;
 			}
@@ -93,7 +79,7 @@ namespace CRI.ConnectedGymnasium
 		// Checking every tracker for activity and linking it to a player if it is active
 		void CheckForActiveTrackers()
 		{
-			foreach (var tracker in trackers)
+			foreach (var tracker in _trackers)
 			{
 				if (tracker.GetComponent<ActiveTracker>().toActivate == true && tracker.GetComponent<ActiveTracker>().active == false)
 				{

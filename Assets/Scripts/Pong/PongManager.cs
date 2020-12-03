@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CRI.ConnectedGymnasium;
+using UnityEngine.SceneManagement;
 
 namespace CRI.ConnectedGymnasium.Pong
 {
@@ -18,9 +19,12 @@ namespace CRI.ConnectedGymnasium.Pong
 			}
 		}
 
+		private PlayerManager playerManager;
+
 		private void Awake()
 		{
 			_instance = this;
+			playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
 		}
 
 		public bool gameStart { get; private set; } = false;
@@ -35,7 +39,11 @@ namespace CRI.ConnectedGymnasium.Pong
 		// Update is called once per frame
 		void Update()
 		{
-			if (gameStart == false && nbPlayerBlue + nbPlayerRed == PlayerManager.Instance.nbPlayer)
+			if (Input.GetKeyDown(KeyCode.Escape)) {
+				SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
+			}
+
+			if (gameStart == false && nbPlayerBlue + nbPlayerRed == playerManager.nbPlayer)
 			{
 				if (uiWaiting.activeSelf == true)
 				{
