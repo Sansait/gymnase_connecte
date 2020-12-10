@@ -11,7 +11,6 @@ namespace CRI.ConnectedGymnasium
 		private PlayerManager playerManager;
 		void OnEnable()
 		{
-			Debug.Log("Testing connection for devices");
 			SteamVR_Events.DeviceConnected.Listen(OnDeviceConnected);
 			playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
 		}
@@ -28,11 +27,13 @@ namespace CRI.ConnectedGymnasium
 					ETrackedDeviceClass deviceClass = OpenVR.System.GetTrackedDeviceClass((uint)index);
 					if (deviceClass == ETrackedDeviceClass.Controller)
 					{
+						// not using any controllers at the moment
 						Debug.Log("Controller got connected at index:" + index);
 					}
 					else if (deviceClass == ETrackedDeviceClass.GenericTracker)
 					{
 						Debug.Log("Tracker got connected at index:" + index);
+						// index 0 is the HMD
 						if (index > 0)
 							playerManager._trackers[index - 1].GetComponent<ActiveTracker>().toActivate = true;
 					}

@@ -32,6 +32,7 @@ namespace CRI.ConnectedGymnasium
 
 		public void Calibrate()
 		{
+			// resetting a potential previous calibration
 			ResetCalibration();
 
 			Vector3 rotation = Vector3.zero;
