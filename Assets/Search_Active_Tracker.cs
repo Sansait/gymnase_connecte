@@ -9,10 +9,25 @@ namespace CRI.ConnectedGymnasium
 	public class Search_Active_Tracker : MonoBehaviour
 	{
 		private PlayerManager playerManager;
-		void OnEnable()
+		void Start()
 		{
+			Debug.Log("Start");
 			SteamVR_Events.DeviceConnected.Listen(OnDeviceConnected);
 			playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
+			CheckForActiveTracker();
+		}
+
+		private void CheckForActiveTracker()
+		{
+			for (int i = 1; i < 10; i++)
+			{
+				ETrackedDeviceClass deviceClass = OpenVR.System.GetTrackedDeviceClass((uint)i);
+				if (deviceClass == ETrackedDeviceClass.GenericTracker && OpenVR.System.IsTrackedDeviceConnected((uint)i))
+				{
+					Debug.Log("Tracker got connected at index:" + i);
+					playerManager._trackers[i].GetComponent<ActiveTracker>().toActivate = true;
+				}
+			}
 		}
 
 		// A SteamVR device got connected/disconnected
