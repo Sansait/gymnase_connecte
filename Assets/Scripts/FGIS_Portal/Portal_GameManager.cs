@@ -1,13 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Portal_GameManager : MonoBehaviour
 {
 
+    int[] correctSymbolsId;
+    int correctKnot;
+
     public static Portal_GameManager instance;
     [SerializeField] int currentLevel = 0;
     [SerializeField] GameObject[] levels;
+    [SerializeField] GameObject[] symbols;
+    [SerializeField] GameObject[] knots;
+
+    [SerializeField] GameObject levelsParent;
+    [SerializeField] GameObject portalGame;
+
+    public Transform [] portalPoints;
 
     void Awake()
     {
@@ -21,21 +32,117 @@ public class Portal_GameManager : MonoBehaviour
             return;
         }
     }
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        correctSymbolsId = new int[4];
+        levelsParent.SetActive(false);
+        portalGame.SetActive(true);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            correctSymbolsId[0] = 5;
+            correctSymbolsId[1] = 1;
+            correctSymbolsId[2] = 7;
+            correctSymbolsId[3] = 9;
+            correctKnot = 1;
+            levelsParent.SetActive(true);
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            correctSymbolsId[0] = 6;
+            correctSymbolsId[1] = 2;
+            correctSymbolsId[2] = 8;
+            correctSymbolsId[3] = 10;
+            correctKnot = 2;
+            levelsParent.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            correctSymbolsId[0] = 7;
+            correctSymbolsId[1] = 3;
+            correctSymbolsId[2] = 9;
+            correctSymbolsId[3] = 11;
+            correctKnot = 3;
+            levelsParent.SetActive(true);
+
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            correctSymbolsId[0] = 8;
+            correctSymbolsId[1] = 4;
+            correctSymbolsId[2] = 10;
+            correctSymbolsId[3] = 0;
+            correctKnot = 4;
+            levelsParent.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            correctSymbolsId[0] = 9;
+            correctSymbolsId[1] = 5;
+            correctSymbolsId[2] = 11;
+            correctSymbolsId[3] = 1;
+            correctKnot = 5;
+            levelsParent.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            correctSymbolsId[0] = 10;
+            correctSymbolsId[1] = 6;
+            correctSymbolsId[2] = 0;
+            correctSymbolsId[3] = 2;
+            correctKnot = 6;
+            levelsParent.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            correctSymbolsId[0] = 11;
+            correctSymbolsId[1] = 7;
+            correctSymbolsId[2] = 1;
+            correctSymbolsId[3] = 3;
+            correctKnot = 7;
+            levelsParent.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            correctSymbolsId[0] = 0;
+            correctSymbolsId[1] = 8;
+            correctSymbolsId[2] = 2;
+            correctSymbolsId[3] = 4;
+            correctKnot = 8;
+            levelsParent.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            correctSymbolsId[0] = 1;
+            correctSymbolsId[1] = 9;
+            correctSymbolsId[2] = 3;
+            correctSymbolsId[3] = 5;
+            correctKnot = 9;
+            levelsParent.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            correctSymbolsId[0] = 2;
+            correctSymbolsId[1] = 10;
+            correctSymbolsId[2] = 4;
+            correctSymbolsId[3] = 6;
+            correctKnot = 0;
+            levelsParent.SetActive(true);
+        }
     }
 
     public void NextLevel()
     {
         levels[currentLevel].SetActive(false);
+        symbols[correctSymbolsId[currentLevel]].SetActive(true);
         currentLevel++;
         if (currentLevel < levels.Length)
         {
@@ -43,8 +150,12 @@ public class Portal_GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("End");
+            levelsParent.SetActive(false);
+            knots[correctKnot].SetActive(true);
+            portalGame.SetActive(false);
+
         }
 
     }
-}
+
+}   
