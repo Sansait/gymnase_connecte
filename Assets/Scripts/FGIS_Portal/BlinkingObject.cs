@@ -20,7 +20,7 @@ public class BlinkingObject : MonoBehaviour
         myCollider = GetComponent<Collider>();
 
         isActive = true;
-        inactiveTime = Random.Range(5, 10);
+        inactiveTime = Random.Range(2,6);
         timer = activeTime;
     }
 
@@ -28,7 +28,6 @@ public class BlinkingObject : MonoBehaviour
     void FixedUpdate()
     {
         timer += Time.deltaTime;
-        Debug.Log(timer);
         if(!isActive && timer >= inactiveTime)
         {
             myMesh.enabled = true ;
