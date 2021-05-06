@@ -41,7 +41,9 @@ public class TargetToCharge : MonoBehaviour
             {
                 AudioManager.instance.Play("energy_void");
                 deathParticles.PlayDeathParticles(this.transform.position);
-                Destroy(gameObject);
+                gameObject.SetActive(false);
+                chargingProgress = 0;
+                targetTransform.localScale = targetStartScale;
 
                 if (myLevelManager != null)
                 {

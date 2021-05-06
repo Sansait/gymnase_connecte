@@ -10,10 +10,11 @@ public class Portal_GameManager : MonoBehaviour
     int correctKnot;
 
     public static Portal_GameManager instance;
-    [SerializeField] int currentLevel = 0;
+    [SerializeField] int currentLevel;
     [SerializeField] GameObject[] levels;
     [SerializeField] GameObject[] symbols;
     [SerializeField] GameObject[] knots;
+    [SerializeField] GameObject[] targets;
 
     [SerializeField] GameObject levelsParent;
     [SerializeField] GameObject portalGame;
@@ -38,13 +39,15 @@ public class Portal_GameManager : MonoBehaviour
         correctSymbolsId = new int[4];
         levelsParent.SetActive(false);
         portalGame.SetActive(true);
+        currentLevel = 0;
     }
 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            ResetGame();
         }
         else if(Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -155,6 +158,40 @@ public class Portal_GameManager : MonoBehaviour
             portalGame.SetActive(false);
 
         }
+
+    }
+
+    public void ResetGame()
+    {
+        for (int i = 0; i < symbols.Length; i++)
+        {
+            symbols[i].SetActive(false);
+
+        }
+
+        for (int i = 0; i < knots.Length; i++)
+        {
+            knots[i].SetActive(false);
+        }
+
+        correctSymbolsId = new int[4];
+        levelsParent.SetActive(false);
+        portalGame.SetActive(true);
+
+        for (int i = 0; i < targets.Length; i++)
+        {
+            targets[i].SetActive(true);
+        }
+
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levels[i].GetComponent<Portal_LevelManager>().Restart();
+            levels[i].SetActive(false);
+        }
+
+
+        currentLevel = 0;
+        levels[0].SetActive(true);
 
     }
 

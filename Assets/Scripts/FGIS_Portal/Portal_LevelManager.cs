@@ -5,7 +5,11 @@ using UnityEngine;
 public class Portal_LevelManager : MonoBehaviour
 {
     [SerializeField] int nbSteps;
-
+    int nbStepsStart;
+    void Start()
+    {
+        nbStepsStart = nbSteps;
+    }
     public void NextStep()
     {
         nbSteps--;
@@ -13,5 +17,10 @@ public class Portal_LevelManager : MonoBehaviour
         {
             Portal_GameManager.instance.NextLevel();
         }
+    }
+
+    public void Restart()
+    {
+        nbSteps = nbStepsStart;
     }
 }
