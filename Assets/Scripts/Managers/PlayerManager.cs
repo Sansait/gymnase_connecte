@@ -13,7 +13,7 @@ namespace CRI.ConnectedGymnasium
 		public int nbPlayer { get; private set; } = 0;
 
 		//Getting a list of all trackers and a list of all players
-		void Awake()
+		void Start()
 		{
 			Debug.Log("Start");
 			GameObject[] _trackerstmp = GameObject.FindGameObjectsWithTag("Tracker");

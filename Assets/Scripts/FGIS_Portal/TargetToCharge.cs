@@ -12,6 +12,11 @@ public class TargetToCharge : MonoBehaviour
     [SerializeField] float targetFinalSize;
     [SerializeField] Transform targetTransform;
 
+    [SerializeField]
+    private Portal_LevelManager myLevelManager;
+    [SerializeField]
+    private DeathParticles deathParticles;
+
     private void Start()
     {
         targetStartScale = targetTransform.localScale;
@@ -31,18 +36,25 @@ public class TargetToCharge : MonoBehaviour
     {
         if (other.CompareTag("Mass"))
         {
-            //Upsizing the scale of the target to "targetFinalSize" in "chargingDuraction" seconds
-            if (chargingProgress < chargingDuration)
+
+            if (chargingProgress >= chargingDuration)
             {
-                chargingProgress += Time.deltaTime;
-                Debug.Log(chargingProgress);
-                // Upsizing effect only on x and z axis
-                targetTransform.localScale = new Vector3(targetStartScale.x + ((chargingProgress / chargingDuration) * (targetFinalSize-targetStartScale.x)), targetStartScale.y, targetStartScale.z + ((chargingProgress / chargingDuration) * (targetFinalSize - targetStartScale.z)));
+                AudioManager.instance.Play("energy_void");
+                deathParticles.PlayDeathParticles(this.transform.position);
+                Destroy(gameObject);
+
+                if (myLevelManager != null)
+                {
+                    myLevelManager.NextStep();
+                }
             }
+            //Upsizing the scale of the target to "targetFinalSize" in "chargingDuraction" seconds
             else
             {
-                // Call what you want when the target is fully charged
-                //Zodiac_GameManager.singleton.
+                chargingProgress += Time.deltaTime;
+                // Upsizing effect only on x and z axis
+                targetTransform.localScale = new Vector3(targetStartScale.x + ((chargingProgress / chargingDuration) * (targetFinalSize - targetStartScale.x)),
+                    targetStartScale.y, targetStartScale.z + ((chargingProgress / chargingDuration) * (targetFinalSize - targetStartScale.z)));
             }
         }
     }
