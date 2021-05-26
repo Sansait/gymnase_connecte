@@ -44,9 +44,13 @@ public class Portal_GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Application.Quit();
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            
             ResetGame();
         }
         else if(Input.GetKeyDown(KeyCode.Alpha1))
