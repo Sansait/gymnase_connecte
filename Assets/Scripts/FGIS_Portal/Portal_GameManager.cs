@@ -59,7 +59,7 @@ public class Portal_GameManager : MonoBehaviour
             correctSymbolsId[1] = 1;
             correctSymbolsId[2] = 7;
             correctSymbolsId[3] = 9;
-            correctKnot = 1;
+            correctKnot = 0;
             levelsParent.SetActive(true);
         }
         else if(Input.GetKeyDown(KeyCode.Alpha2))
@@ -68,7 +68,7 @@ public class Portal_GameManager : MonoBehaviour
             correctSymbolsId[1] = 2;
             correctSymbolsId[2] = 8;
             correctSymbolsId[3] = 10;
-            correctKnot = 2;
+            correctKnot = 1;
             levelsParent.SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -77,7 +77,7 @@ public class Portal_GameManager : MonoBehaviour
             correctSymbolsId[1] = 3;
             correctSymbolsId[2] = 9;
             correctSymbolsId[3] = 11;
-            correctKnot = 3;
+            correctKnot = 2;
             levelsParent.SetActive(true);
 
         }
@@ -87,7 +87,7 @@ public class Portal_GameManager : MonoBehaviour
             correctSymbolsId[1] = 4;
             correctSymbolsId[2] = 10;
             correctSymbolsId[3] = 0;
-            correctKnot = 4;
+            correctKnot = 3;
             levelsParent.SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha5))
@@ -96,7 +96,7 @@ public class Portal_GameManager : MonoBehaviour
             correctSymbolsId[1] = 5;
             correctSymbolsId[2] = 11;
             correctSymbolsId[3] = 1;
-            correctKnot = 5;
+            correctKnot = 4;
             levelsParent.SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha6))
@@ -105,7 +105,7 @@ public class Portal_GameManager : MonoBehaviour
             correctSymbolsId[1] = 6;
             correctSymbolsId[2] = 0;
             correctSymbolsId[3] = 2;
-            correctKnot = 6;
+            correctKnot = 5;
             levelsParent.SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha7))
@@ -114,7 +114,7 @@ public class Portal_GameManager : MonoBehaviour
             correctSymbolsId[1] = 7;
             correctSymbolsId[2] = 1;
             correctSymbolsId[3] = 3;
-            correctKnot = 7;
+            correctKnot = 6;
             levelsParent.SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha8))
@@ -123,7 +123,7 @@ public class Portal_GameManager : MonoBehaviour
             correctSymbolsId[1] = 8;
             correctSymbolsId[2] = 2;
             correctSymbolsId[3] = 4;
-            correctKnot = 8;
+            correctKnot = 7;
             levelsParent.SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha9))
@@ -132,7 +132,7 @@ public class Portal_GameManager : MonoBehaviour
             correctSymbolsId[1] = 9;
             correctSymbolsId[2] = 3;
             correctSymbolsId[3] = 5;
-            correctKnot = 9;
+            correctKnot = 8;
             levelsParent.SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha0))
@@ -141,7 +141,7 @@ public class Portal_GameManager : MonoBehaviour
             correctSymbolsId[1] = 10;
             correctSymbolsId[2] = 4;
             correctSymbolsId[3] = 6;
-            correctKnot = 0;
+            correctKnot = 9;
             levelsParent.SetActive(true);
         }
     }

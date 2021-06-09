@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
+    path: Assets/Scenes/FGIS_portal.unity
+    guid: ff549cc24adaba749a8cc6d6a12fce3c
+  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: d58772056b37436429704b0c3063c726
   - enabled: 0
@@ -20,7 +23,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Zodiac.unity
     guid: 02516efee9ed58c4db27b08077f6ce4e
-  - enabled: 1
-    path: Assets/Scenes/FGIS_portal.unity
-    guid: ff549cc24adaba749a8cc6d6a12fce3c
   m_configObjects: {}
