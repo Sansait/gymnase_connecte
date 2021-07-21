@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Portal_LevelManager : MonoBehaviour
 {
-    [SerializeField] int nbSteps;
-    int nbStepsStart;
+    [SerializeField] int nbStepsStart;
+    int nbStepsCurrent;
     void Start()
     {
-        nbStepsStart = nbSteps;
+        nbStepsCurrent = nbStepsStart;
     }
     public void NextStep()
     {
-        nbSteps--;
-        if(nbSteps <= 0)
+        nbStepsCurrent--;
+        if (nbStepsCurrent <= 0)
         {
             Portal_GameManager.instance.NextLevel();
         }
@@ -21,6 +21,6 @@ public class Portal_LevelManager : MonoBehaviour
 
     public void Restart()
     {
-        nbSteps = nbStepsStart;
+        nbStepsCurrent = nbStepsStart;
     }
 }
